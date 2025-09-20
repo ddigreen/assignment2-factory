@@ -1,0 +1,21 @@
+@startuml
+title Abstract Factory - GUI
+interface Button { +click(); +render(): String }
+interface Checkbox { +toggle(); +render(): String }
+interface GUIFactory { +createButton(): Button; +createCheckbox(): Checkbox }
+class WinButton implements Button
+class WinCheckbox implements Checkbox
+class MacButton implements Button
+class MacCheckbox implements Checkbox
+class LinuxButton implements Button
+class LinuxCheckbox implements Checkbox
+class WinFactory implements GUIFactory
+class MacFactory implements GUIFactory
+class LinuxFactory implements GUIFactory
+WinFactory ..> WinButton : creates >
+WinFactory ..> WinCheckbox : creates >
+MacFactory ..> MacButton : creates >
+MacFactory ..> MacCheckbox : creates >
+LinuxFactory ..> LinuxButton : creates >
+LinuxFactory ..> LinuxCheckbox : creates >
+@enduml

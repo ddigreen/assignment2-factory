@@ -1,0 +1,18 @@
+@startuml
+title Factory Method - Logistics
+interface Transport { +deliver(destination): String }
+class Truck implements Transport
+class Ship implements Transport
+class Plane implements Transport
+abstract class Logistics {
+  +planDelivery(destination): String
+  #createTransport(): Transport
+}
+class RoadLogistics extends Logistics
+class SeaLogistics extends Logistics
+class AirLogistics extends Logistics
+Logistics --> Transport : uses >
+RoadLogistics ..> Truck : creates >
+SeaLogistics ..> Ship : creates >
+AirLogistics ..> Plane : creates >
+@enduml
